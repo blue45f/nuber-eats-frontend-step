@@ -1,5 +1,5 @@
 import React from "react";
-import { LoggedOutRouter } from "./routers/loggend-out-router";
+import { LoggedOutRouter } from "./routers/logged-out-router";
 
 function App() {
   return <LoggedOutRouter />;
