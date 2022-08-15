@@ -1,6 +1,7 @@
 import {gql, useQuery} from "@apollo/client";
 import React from "react";
 import {BrowserRouter as Router, Navigate, Route,} from "react-router-dom";
+import {Header} from "../components/header";
 import {Restaurants} from "../pages/client/restaurants";
 import {meQuery} from "../__generated__/meQuery";
 
@@ -32,10 +33,10 @@ export const LoggedInRouter = () => {
   }
   return (
     <Router>
+      <Header/>
       <Router>
         {data.me.role === "Client" && ClientRoutes}
         <Route path="/potato" element={<Navigate replace to="/"/>}></Route>
-
       </Router>
     </Router>
   );
