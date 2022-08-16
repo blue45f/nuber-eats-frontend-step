@@ -6,8 +6,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {Button} from "../components/button";
 import {FormError} from "../components/form-error";
 import nuberLogo from "../images/logo.svg";
-import {createAccountMutation, createAccountMutationVariables,} from "../__generated__/createAccountMutation";
-import {UserRole} from "../__generated__/globalTypes";
+import {CreateAccountMutationMutation, CreateAccountMutationMutationVariables, UserRole} from "../graphql/generated";
 
 const CREATE_ACCOUNT_MUTATION = gql`
   mutation createAccountMutation($createAccountInput: CreateAccountInput!) {
@@ -37,7 +36,7 @@ export const CreateAccount = () => {
     },
   });
   const history = useNavigate();
-  const onCompleted = (data: createAccountMutation) => {
+  const onCompleted = (data: CreateAccountMutationMutation) => {
     const {
       createAccount: {ok},
     } = data;
@@ -49,7 +48,7 @@ export const CreateAccount = () => {
   const [
     createAccountMutation,
     {loading, data: createAccountMutationResult},
-  ] = useMutation<createAccountMutation, createAccountMutationVariables>(
+  ] = useMutation<CreateAccountMutationMutation, CreateAccountMutationMutationVariables>(
     CREATE_ACCOUNT_MUTATION,
     {
       onCompleted,
